@@ -58,7 +58,12 @@ guesses = []
 lives = 6
 word_index = random.randint(0, len(words_list)-1)
 selected_word = words_list[word_index].upper()
-print(selected_word)
+print(selected_word) #test, delete later
+
+for i in range(len(selected_word)):
+    guesses.append("_")
+
+print(guesses) #test, delete later
 
 
 def user_select_letter():
@@ -94,3 +99,14 @@ def print_hangman_state():
 
 
 letter_selected = user_select_letter()
+
+
+while lives > 0:
+    print_hangman_state()
+
+
+if lives == 0:
+    print_hangman_state()
+    print(f"Game Over! The word was {selected_word}!")
+else:
+    print(f"Congratulations, you win! The word was {selected_word}!")
