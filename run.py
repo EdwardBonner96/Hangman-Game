@@ -54,14 +54,14 @@ HANGMAN_PICTURES = ['''
 =========''']
 
 words_list = ['testone', 'Testtwo', 'testthree', 'testfour', 'testfive']
-guesses = []
+guesses = ""
 lives = 6
 word_index = random.randint(0, len(words_list)-1)
 selected_word = words_list[word_index].upper()
 print(selected_word) #test, delete later
 
 for i in range(len(selected_word)):
-    guesses.append("_")
+    guesses = guesses + "_ "
 
 print(guesses) #test, delete later
 
@@ -106,7 +106,7 @@ while lives > 0:
         if "_" not in guesses:
             break
     else:
-        lives -= lives
+        lives -= 1
         print_hangman_state()
         print(f"{letter_selected} is not in the word!")
                 

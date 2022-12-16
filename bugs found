@@ -1,0 +1,3 @@
+Infinite While loop in user_select_letter meaning the user just kept picking letters (found using python tutor)
+Decrementing lives, used lives -= lives and not lives -= 1 resulting in instant loss (found using python tutor)
+Fixed bug adding strings of _ to make guesses list
