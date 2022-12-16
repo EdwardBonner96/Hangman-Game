@@ -106,12 +106,12 @@ while lives > 0:
             if letter_selected == selected_word[i]:
                 guesses[i] = letter_selected
         if "_" not in guesses:
-            #break, cont or pass - check
+            break
     else:
         lives -= lives
         print_hangman_state()
         print(f"{letter_selected} is not in the word!")
-        
+                
 
 #  Shows win and loss messages on game over
 if lives == 0:
