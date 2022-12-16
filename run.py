@@ -70,15 +70,10 @@ def user_select_letter():
     """
     Get letter input from the user.
     """
-    while True:
-        print("===============")
-        print("Please Select a letter")
-        print(guesses)
-        user_input = input("Enter letter here: ")
-
-        if validate_user_input(user_input):
-            print("Test print valid data")
-            break
+    print("===============")
+    print("Please Select a letter")
+    print(guesses)
+    user_input = input("Enter letter here: ")
 
     return user_input
 
