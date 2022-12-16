@@ -71,8 +71,9 @@ def user_select_letter():
     Get letter input from the user.
     """
     while True:
-        print("Please Select a letter\n")
-
+        print("===============")
+        print("Please Select a letter")
+        print(guesses)
         user_input = input("Enter letter here: ")
 
         if validate_user_input(user_input):
@@ -87,7 +88,9 @@ def validate_user_input(user_input):
     Validates user input, only one letter accepted.
     """
     if user_input.isalpha() == False or len(user_input) != 1:
-        print("Invalid Input\n")
+        print("===============")
+        print("Invalid Input")
+        print(f"{lives} lives remaining")
 
 
 def print_hangman_state():
