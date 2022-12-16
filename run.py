@@ -1,7 +1,7 @@
-# Allows random number generation
+#  Allows random number generation
 import random
 
-# ASCII art for lives, from https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c
+#  ASCII art for lives, from https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c
 HANGMAN_PICTURES = ['''
   +---+
   |   |
@@ -98,13 +98,22 @@ def print_hangman_state():
     print(f"\nYou have {lives} lives remaining!")
 
 
-letter_selected = user_select_letter()
-
-
 while lives > 0:
     print_hangman_state()
+    letter_selected = user_select_letter()
+    if letter_selected in selected_word:
+        for i in range(len(selected_word)):
+            if letter_selected == selected_word[i]:
+                guesses[i] = letter_selected
+        if "_" not in guesses:
+            #break, cont or pass - check
+    else:
+        lives -= lives
+        print_hangman_state()
+        print(f"{letter_selected} is not in the word!")
+        
 
-
+#  Shows win and loss messages on game over
 if lives == 0:
     print_hangman_state()
     print(f"Game Over! The word was {selected_word}!")
