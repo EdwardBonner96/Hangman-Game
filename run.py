@@ -54,6 +54,11 @@ HANGMANPICS = ['''
 =========''']
 
 words_list = ['testone', 'Testtwo', 'testthree']
+guesses = []
+lives = 6
+word_index = random.randint(0, len(words_list)-1)
+selected_word = words_list[word_index].upper()
+print(selected_word)
 
 
 def user_select_letter():
