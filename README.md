@@ -65,7 +65,18 @@ I have manually tested the code by doing the following:
  ![python-checker](assets/images/python-checker.png)
 
 ## Deployment
- - The project is deployed to Github & Heroku
+This project was created in Github and deployed on Heroku
+Steps for Deployment:
+ - Fork or Clone the repository
+ - Create a new Heroku app
+In Settings:
+ - Reveal Config Vars 'Port' in key, '8000' in value
+ - Add buildpacks - python then node.js in that order, save both
+In Deploy section:
+ - Connect to Github
+ - Search for Github repository name
+ - Connect repository to app
+ - Deploy the project
 
 ## Credits
  - ASCII art for lives, from 
