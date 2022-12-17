@@ -92,7 +92,7 @@ while lives > 0:
     print("Please Select a letter")
     print(f"Guessed letters: {input_tracker}")
     print(guesses)
-    user_input = input("Enter letter here: ").upper()
+    user_input = input(f"Enter letter here:\n").upper()
 
     if user_input.isalpha() is False or len(user_input) != 1:
         """
@@ -112,8 +112,7 @@ while lives > 0:
         continue
 
     input_tracker = input_tracker + user_input
-    print(input_tracker)
-    
+
     if user_input in CHOSEN_WORD:
         """
         Checks the user guessed a correct letter and replaces
