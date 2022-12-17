@@ -1,7 +1,10 @@
 #  Allows random number generation
 import random
 
-#  ASCII art for lives, from https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c
+"""
+ASCII art for lives, from 
+https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c
+"""
 HANGMAN_PICTURES = ['''
   +---+
   |   |
@@ -54,8 +57,8 @@ HANGMAN_PICTURES = ['''
 =========''']
 
 #  List of possible words to guess
-words_list = ['Empress', 'Liable', 'Require', 'Examination', 'Medical', 'Difficulty',
-     'Amazing', 'Ignore', 'Castle', 'Onomatopoeia', 'Verify']
+words_list = ['Empress', 'Liable', 'Require', 'Examination', 'Medical',
+     'Difficulty', 'Amazing', 'Ignore', 'Castle', 'Onomatopoeia']
 
 guesses = ""
 input_tracker = ""
@@ -90,7 +93,8 @@ while lives > 0:
     print(f"Guessed letters: {input_tracker}")
     print(guesses)
     user_input = input("Enter letter here: ").upper()
-    if user_input.isalpha() == False or len(user_input) != 1:
+
+    if user_input.isalpha() is False or len(user_input) != 1:
         """
         Verifies user input is one letter and rejects invalid
         inputs, informs the user of this
@@ -98,6 +102,7 @@ while lives > 0:
         print("===============")
         print("Invalid Input")
         continue
+
     if user_input in input_tracker:
         """
         Tracks guessed letters though the game and tells
@@ -105,8 +110,10 @@ while lives > 0:
         """
         print(f"You have already guessed {user_input}!")
         continue
+
     input_tracker = input_tracker + user_input
     print(input_tracker)
+    
     if user_input in CHOSEN_WORD:
         """
         Checks the user guessed a correct letter and replaces
@@ -121,8 +128,7 @@ while lives > 0:
             break
     else:
         lives -= 1
-        print(f"\nThe letter {user_input} is not in the word!")
-                
+        print(f"\nThe letter {user_input} is not in the word!")          
 
 #  Shows win and loss messages on game over
 if lives == 0:
