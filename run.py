@@ -53,30 +53,37 @@ HANGMAN_PICTURES = ['''
       |
 =========''']
 
-words_list = ['testone', 'Testtwo', 'testthree', 'testfour', 'testfive']
+#  List of possible words to guess
+words_list = ['Empress', 'Liable', 'Require', 'Examination', 'Medical', 'Difficulty',
+     'Amazing', 'Ignore', 'Castle', 'Onomatopoeia', 'Verify']
+
 guesses = ""
+input_tracker = ""
 lives = 6
+
+#  Selects a random word from the words_list
 word_index = random.randint(0, len(words_list)-1)
 selected_word = words_list[word_index].upper()
-game_over_word = selected_word
-input_tracker = ""
-print(selected_word) #test, delete later
+CHOSEN_WORD = selected_word
 
+#  Builds a number of underscores equal to word length
 for i in range(len(selected_word)):
     guesses = guesses + "_"
-
-print(guesses) #test, delete later
 
 
 def print_hangman_state():
     """
-    Shows the user the hangman, letters selected and correct guesses
+    Shows the user the hangman status and remaining lives
     """
     print(HANGMAN_PICTURES[(6-lives)])
     print(f"\nYou have {lives} lives remaining!")
 
 
 while lives > 0:
+    """
+    Basic formatting and user information, tracks their chosen letters
+    through the game and converts input to a capital letter
+    """
     print_hangman_state()
     print("===============")
     print("Please Select a letter")
@@ -84,10 +91,27 @@ while lives > 0:
     print(guesses)
     user_input = input("Enter letter here: ").upper()
     if user_input.isalpha() == False or len(user_input) != 1:
+        """
+        Verifies user input is one letter and rejects invalid
+        inputs, informs the user of this
+        """
         print("===============")
         print("Invalid Input")
         continue
-    if user_input in game_over_word:
+    if user_input in input_tracker:
+        """
+        Tracks guessed letters though the game and tells
+        the user if they have already guessed a letter
+        """
+        print(f"You have already guessed {user_input}!")
+        continue
+    input_tracker = input_tracker + user_input
+    print(input_tracker)
+    if user_input in CHOSEN_WORD:
+        """
+        Checks the user guessed a correct letter and replaces
+        the blank gaps in the word, filling them in with the letter
+        """
         for i in range(0, len(selected_word)):
             if user_input == selected_word[i]:
                 x = selected_word.find(user_input) 
@@ -98,16 +122,11 @@ while lives > 0:
     else:
         lives -= 1
         print(f"\nThe letter {user_input} is not in the word!")
-    if user_input in input_tracker:
-        print(f"You have already guessed {user_input}!")
-        continue
-    input_tracker = input_tracker + user_input
-    print(input_tracker)
                 
 
 #  Shows win and loss messages on game over
 if lives == 0:
     print_hangman_state()
-    print(f"Game Over! The word was {game_over_word}!")
+    print(f"Game Over! The word was {CHOSEN_WORD}!")
 else:
-    print(f"Congratulations, you win! The word was {game_over_word}!")
+    print(f"Congratulations, you win! The word was {CHOSEN_WORD}!")
