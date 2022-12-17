@@ -58,6 +58,7 @@ guesses = ""
 lives = 6
 word_index = random.randint(0, len(words_list)-1)
 selected_word = words_list[word_index].upper()
+game_over_word = selected_word
 print(selected_word) #test, delete later
 
 for i in range(len(selected_word)):
@@ -83,12 +84,13 @@ while lives > 0:
     if user_input.isalpha() == False or len(user_input) != 1:
         print("===============")
         print("Invalid Input")
-        print(f"{lives} lives remaining")
         continue
     if user_input in selected_word:
-        for i in range(len(selected_word)):
+        for i in range(1, len(selected_word)):
             if user_input == selected_word[i]:
-                guesses[i] = user_input
+                x = selected_word.find(user_input) 
+                guesses = guesses[:x] + user_input + guesses[x+1:]
+                selected_word = selected_word[:x] + "_" + selected_word[x+1:]
         if "_" not in guesses:
             break
     else:
@@ -99,6 +101,6 @@ while lives > 0:
 #  Shows win and loss messages on game over
 if lives == 0:
     print_hangman_state()
-    print(f"Game Over! The word was {selected_word}!")
+    print(f"Game Over! The word was {game_over_word}!")
 else:
-    print(f"Congratulations, you win! The word was {selected_word}!")
+    print(f"Congratulations, you win! The word was {game_over_word}!")
